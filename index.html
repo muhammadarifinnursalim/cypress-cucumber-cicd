@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi CRUD User</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background: #f0f2f5; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .hidden { display: none; }
+        h1, h2 { color: #2c3e50; }
+        input { width: 95%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; border: none; background-color: #3498db; color: white; border-radius: 4px; cursor: pointer; margin-right: 5px; }
+        .message { margin-top: 1rem; padding: 1rem; border-radius: 4px; }
+        .error { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div id="login-view" data-cy="view-login">
+        <h1>Silakan Login</h1>
+        <input type="email" placeholder="Email" data-cy="input-email-login">
+        <input type="password" placeholder="Password" data-cy="input-login-password">
+        <button onclick="handleLogin()" data-cy="button-login">Login</button>
+        <div id="login-message" class="message hidden" data-cy="message-login"></div>
+    </div>
+
+    <div id="dashboard-view" class="hidden" data-cy="view-dashboard">
+        <h1>Manajemen User</h1>
+        <!-- <button onclick="handleLogout()" class="danger">Logout</button> -->
+         <!-- KODE YANG SUDAH DIPERBAIKI -->
+<button onclick="handleLogout()" class="danger" data-cy="button-logout">Logout</button>
+    </div>
+
+</div>
+
+<script>
+    function handleLogin() {
+        const email = document.querySelector('[data-cy=input-email-login]').value;
+        const password = document.querySelector('[data-cy=input-login-password]').value;
+        const messageEl = document.getElementById('login-message');
+
+        // ==== LOGIKA YANG HILANG DIKEMBALIKAN DI SINI ====
+        if (email === 'admin@bukalapak.com' && password === 'password123') {
+            // Jika sukses, pindah ke halaman dashboard
+            document.getElementById('login-view').classList.add('hidden');
+            document.getElementById('dashboard-view').classList.remove('hidden');
+            messageEl.classList.add('hidden');
+        } else {
+            // Jika gagal, tampilkan pesan error
+            messageEl.textContent = 'Login gagal!';
+            messageEl.className = 'message error';
+            messageEl.classList.remove('hidden');
+        }
+    }
+
+    function handleLogout() {
+        document.getElementById('dashboard-view').classList.add('hidden');
+        document.getElementById('login-view').classList.remove('hidden');
+    }
+</script>
+</body>
+</html>

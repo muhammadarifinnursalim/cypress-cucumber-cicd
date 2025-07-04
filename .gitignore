@@ -1,0 +1,8 @@
+# Abaikan semua dependensi
+node_modules
+
+# Abaikan hasil tes lokal
+cypress/reports
+cypress/screenshots
+cypress/videos
+cypress/downloads
