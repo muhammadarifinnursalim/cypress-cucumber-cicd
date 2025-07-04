@@ -22,8 +22,8 @@
     "cypress": "^13.6.2",
     "cypress-mochawesome-reporter": "^3.8.2",
     "mochawesome-merge": "^5.0.0",
-    "rimraf": "^6.0.1",
-    "typescript": "^5.8.3"
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": "cypress/e2e/bdd/step_definitions/**/*.{js,ts}"

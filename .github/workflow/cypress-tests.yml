@@ -1,0 +1,21 @@
+name: Cypress Tests
+
+on: [push] # Jalankan setiap kali ada push ke repo
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Jalankan server lokal untuk aplikasi kita
+      - name: Start local server
+        run: npm start &
+
+      # Instal & jalankan Cypress
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          wait-on: 'http://localhost:5500' # Tunggu server siap sebelum tes
